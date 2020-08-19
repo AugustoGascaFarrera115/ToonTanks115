@@ -7,7 +7,7 @@
 #include "ProjectileBase.generated.h"
 
 
-class UProjctileMovementComponent;
+class UProjectileMovementComponent;
 
 UCLASS()
 class TOONTANKS_API AProjectileBase : public AActor
@@ -17,7 +17,7 @@ class TOONTANKS_API AProjectileBase : public AActor
 
 private:
 
-	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Projectile Component", meta = (AllowPrivateSAccess = "true"))
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Projectile Component", meta = (AllowPrivateAccess = "true"))
 		UProjectileMovementComponent* ProjectileMovement115;
 
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Projectile Component", meta = (AllowPrivateAccess = "true"))
@@ -26,11 +26,15 @@ private:
 	UPROPERTY(EditDefaultsOnly,Category = "Projectile Damage")
 	TSubclassOf<UDamageType> DamageType;
 
-	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Movement", meta = (AllowPrivateSAcess = "true"))
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Projectile Movement", meta = (AllowPrivateAccess = "true"))
 		float MovementSpeed = 1500.0f;
 
-	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Movement", meta = (AllowPrivateSAcess = "true"))
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Projectile Damage", meta = (AllowPrivateAccess = "true"))
 		float Damage = 100.0f;
+
+
+	UFUNCTION()
+		void OnHit(UPrimitiveComponent* HitComponent, AActor* OtherActor, UPrimitiveComponent* OtherComp, FVector NormalImpulse, const FHitResult& Hit);
 
 public:	
 	// Sets default values for this actor's properties

@@ -8,6 +8,7 @@
 
 
 class UCapsuleComponent;
+class AProjectileBase;
 
 UCLASS()
 class TOONTANKS_API APawnBase : public APawn
@@ -30,6 +31,10 @@ private:
 	UPROPERTY(VisibleAnywhere,BlueprintReadOnly, Category = "Projectile Spawn",meta = (AllowPrivateAccess = "true"))
 	USceneComponent* ProjectileSpawnPoint;
 	
+	UPROPERTY(EditAnywhere,BlueprintReadOnly,Category="Projectile Class Reference",meta = (AllowPrivateAccess = "true"))
+	TSubclassOf<AProjectileBase> ProjectileClassRef;
+
+
 public:
 
 	APawnBase();

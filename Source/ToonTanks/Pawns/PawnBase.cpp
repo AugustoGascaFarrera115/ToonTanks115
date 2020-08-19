@@ -5,6 +5,7 @@
 #include "Components/CapsuleComponent.h"
 #include "Components/StaticMeshComponent.h"
 #include "Components/SceneComponent.h"
+#include "ToonTanks/Actors/ProjectileBase.h"
 
 // Sets default values
 APawnBase::APawnBase()
@@ -40,6 +41,18 @@ void APawnBase::Fire()
 {
 	//get projectile spawn location && Rotation 
 	UE_LOG(LogTemp, Warning, TEXT("fIRE function succesfully !!!!"));
+
+
+	if (ProjectileClassRef)
+	{
+		FVector SpawnLocation = ProjectileSpawnPoint->GetComponentLocation();
+		FRotator SpawnRotator = ProjectileSpawnPoint->GetComponentRotation();
+
+
+		AProjectileBase* TemporalProjectile = GetWorld()->SpawnActor<AProjectileBase>(ProjectileClassRef, SpawnLocation, SpawnRotator);
+		TemporalProjectile->SetOwner(this);
+	}
+
 }
 
 void APawnBase::HandleDestruction()
