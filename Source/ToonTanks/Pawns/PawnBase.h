@@ -45,6 +45,14 @@ protected:
 	// Called when the game starts or when spawned
 	virtual void BeginPlay() override;
 
+
+	virtual void Fire();
+
+
+	virtual void HandleDestruction();
+
+	virtual void RotateTurretFunction(FVector LookAtTarget);
+
 	
 
 };
